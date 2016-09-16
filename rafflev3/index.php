@@ -70,7 +70,7 @@
     </section>
 
     <footer>
-        <a href='https://github.com/susanBuck/dwa15-php-practice'>View the code</a>
+        <a href='https://github.com/susanBuck/dwa15-php-practice/tree/master/rafflev3'>View the code</a>
     </footer>
 
 </body>

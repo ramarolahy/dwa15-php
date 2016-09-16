@@ -11,8 +11,8 @@ $winnerCount = 0;
 foreach($_POST as $key => $value) {
 
 	# Some simple form validation
-	if($value == '') {
-		$error = 'Please fill out all contestant names';
+	if(trim($value == '')) {
+		$error = 'Please fill out all contestant names.';
 		return;
 	}
 	else if(!ctype_alpha($value)) {

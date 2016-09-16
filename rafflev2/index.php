@@ -1,8 +1,3 @@
-<?php
-error_reporting(-1); # Report all PHP errors
-ini_set('display_errors', 1);
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,15 +28,13 @@ ini_set('display_errors', 1);
 
 	<!-- Bonus features! -->
 	<br>
-	<?php if($winner_count == 0) { ?>
+	<?php if($winnerCount == 0) { ?>
 		No winners this round :(
-
-	<?php } elseif($winner_count > 1) { ?>
+	<?php } elseif($winnerCount > 1) { ?>
 		It's a tie!
 	<?php } ?>
 
-	<p>
-		<a href='/raffle'>Play again...</a>
-	</p>
+    <a href='https://github.com/susanBuck/dwa15-php-practice'>View the code</a>
 
-</body></html>
+</body>
+</html>

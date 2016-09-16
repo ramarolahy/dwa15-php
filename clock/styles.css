@@ -2,6 +2,10 @@ body {
 	text-align:center;
 }
 
+a:link, a:visited, a:active, a:hover {
+	color:white;
+}
+
 h1,small {
 	color:white;
 	margin-bottom:5px;

@@ -1,33 +1,4 @@
-<?php
-
-require('../tools.php');
-
-if($_POST) {
-    $_POST = sanitize($_POST);
-    dump($_POST); # Output from logic, only for debugging purposes to see the contents of POST
-}
-
-# If no days were checked...
-if(!isset($_POST['days'])) {
-	$results = 'No days were selected';
-	$alertType = 'alert-danger';
-}
-# If days were checked...
-else {
-
-	$results = 'Days chosen: ';
-
-	$alertType = 'alert-info';
-
-	foreach($_POST['days'] as $day) {
-		$results .= $day.', ';
-	}
-
-	# Remove trailing comma
-	$results = rtrim($results, ', ');
-}
-
-?>
+<?php require('checkboxesLogic.php') ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,7 +16,8 @@ else {
 
 	<form method='POST' action='checkboxes.php'>
 
-		<label>First name <input type='text' name='firstName' value=''></label>
+		<!-- Trick to makes it so that if no checkboxes are selected, we still receive $_POST data -->
+		<input type='hidden' name='alwaysPost' value='0'>
 
         <fieldset class='checkboxes'>
             <legend>Select which days you're available</legend>

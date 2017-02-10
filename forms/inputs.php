@@ -1,21 +1,10 @@
-<?php
-
-require('../tools.php');
-
-if($_POST) {
-    $_POST = sanitize($_POST);
-    dump($_POST); # Output from logic, only for debugging purposes to see the contents of POST
-}
-
-# Simulate a user id to store in the hidden field
-$userId = rand(0,100);
-?>
+<?php require('inputsLogic.php'); ?>
 
 <!DOCTYPE html>
 <html>
 <head>
 
-	<title>Basic Input Examples</title>
+	<title>Simple Input Examples</title>
 	<meta charset='utf-8'>
 	<link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet'>
 	<link href='https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css' rel='stylesheet'>
@@ -23,7 +12,10 @@ $userId = rand(0,100);
 
 </head>
 <body>
-	<form method='POST' action='basicInputs.php'>
+
+    <h1>Simple Input Examples</h1>
+
+	<form method='POST' action='inputs.php'>
 
         <input type='hidden' name='userId' value='<?=$userId?>'>
 

@@ -15,8 +15,8 @@ function dump($mixed = null) {
 */
 function sanitize($mixed = null) {
 
-    function convertHtmlEntities($mixed) {
-        return htmlentities($mixed, ENT_QUOTES, "UTF-8");
+    if(!is_array($mixed)) {
+        return convertHtmlEntities($mixed);
     }
 
     function array_map_recursive($callback, $array) {
@@ -29,4 +29,9 @@ function sanitize($mixed = null) {
 
     return array_map_recursive('convertHtmlEntities', $mixed);
 
+}
+
+
+function convertHtmlEntities($mixed) {
+    return htmlentities($mixed, ENT_QUOTES, "UTF-8");
 }

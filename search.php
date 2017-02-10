@@ -1,10 +1,15 @@
 <?php
 
-#echo 'You searched for '.$_GET['searchTerm'];
+require('tools.php');
 
-$description = "<script>alert('Attention; your password has been compromised, visit http://shady.com to secure your account.')</script>";
+if(isset($_COOKIE['recentSearch'])) {
+    $recentSearch = $_COOKIE['recentSearch'];
+}
+else {
+    $recentSearch = '';
+}
 
+setcookie('recentSearch', $_POST['searchTerm']);
 
-?>
-
-<?=htmlentities($description, ENT_QUOTES, "UTF-8"); ?>
+dump('You recently searched for: '.$recentSearch);
+dump('You just searched for: '.$_POST['searchTerm']);

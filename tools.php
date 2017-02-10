@@ -10,7 +10,7 @@ function dump($mixed = null) {
 }
 
 /**
-* 
+*
 */
 function sanitize($mixed = null) {
 

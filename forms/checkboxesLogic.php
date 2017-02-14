@@ -2,9 +2,7 @@
 
 require('../tools.php');
 
-if($_POST) {
-    $_POST = sanitize($_POST);
-}
+dump($_POST);
 
 # If no days were checked...
 if(!isset($_POST['days'])) {

@@ -21,7 +21,7 @@
         <label for='searchTerm'>Search by title:</label>
         <input type='text' name='searchTerm' required id='searchTerm' value='<?=$form->prefill('searchTerm')?>'>
 
-        <input type='checkbox' name='caseSensitive' <?php if($form->isChecked('caseSensitive')) echo 'CHECKED' ?>>
+        <input type='checkbox' name='caseSensitive' <?php if($form->isChosen('caseSensitive')) echo 'CHECKED' ?>>
         <label>Make case sensitive</label>
 
         <br>

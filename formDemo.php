@@ -32,52 +32,42 @@ $errors = $form->validate(
 </head>
 <body>
 
-    <section>
-        
-        <h2>Tools Tests<h2>
-            <?php
-            Tools::dump('Dump of a string');
-            Tools::dump(['Dump of an array','a','b','c']);
-            Tools::d('Dump of a string using the dump alias');
-            ?>
-        </section>
 
-        <section>
-            <h2>Form Tests</h2>
-            <form>
+    <h2>Form Tests</h2>
+    <form>
 
-                <label for='email'>Email (required|email)</label>
-                <input type='text' name='email' id='email' value='<?=$form->prefill('email', 'foo@bar')?>'>
+        <label for='email'>Email (required|email)</label>
+        <input type='text' name='email' id='email' value='<?=$form->prefill('email', 'foo@bar')?>'>
 
-                <label for='username'>username (alphaNumeric)</label>
-                <input type='text' name='username' id='username' value='<?=$form->prefill('username', 'foob@r')?>'>
+        <label for='username'>username (alphaNumeric)</label>
+        <input type='text' name='username' id='username' value='<?=$form->prefill('username', 'foob@r')?>'>
 
-                <label for='age'>Year (numeric)</label>
-                <input type='text' name='year' value='<?=$form->prefill('year', 'abcd')?>'>
+        <label for='age'>Year (numeric)</label>
+        <input type='text' name='year' value='<?=$form->prefill('year', 'abcd')?>'>
 
-                <label for='age'>Age (min:16)</label>
-                <input type='number' name='age' value='<?=$form->prefill('age', '99')?>'>
+        <label for='age'>Age (min:16)</label>
+        <input type='number' name='age' value='<?=$form->prefill('age', '99')?>'>
 
-                <label for='score'>Score (max:5)</label>
-                <input type='number' name='score' value='<?=$form->prefill('score', '99')?>'>
+        <label for='score'>Score (max:5)</label>
+        <input type='number' name='score' value='<?=$form->prefill('score', '99')?>'>
 
-                <label for='rank'>Rank (numeric|min:0|max:5)</label>
-                <input type='number' name='rank' value='<?=$form->prefill('rank', '99')?>'>
+        <label for='rank'>Rank (numeric|min:0|max:5)</label>
+        <input type='number' name='rank' value='<?=$form->prefill('rank', '99')?>'>
 
-                <input type='submit' class='btn'>
+        <input type='submit' class='btn'>
 
-                <?php if($errors): ?>
-                    <div class='alert alert-danger'>
-                        <ul>
-                            <?php foreach($errors as $error): ?>
-                                <li><?=$error?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
-                <?php endif; ?>
+        <?php if($errors): ?>
+            <div class='alert alert-danger'>
+                <ul>
+                    <?php foreach($errors as $error): ?>
+                        <li><?=$error?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
 
-            </form>
+    </form>
 
-        </section>
 
-    </body>
+
+</body>

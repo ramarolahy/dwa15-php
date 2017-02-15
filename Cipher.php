@@ -25,8 +25,8 @@ class Cipher {
             throw new Exception("Cipher algorithm `".$algorithm."` not found", 1);
         }
 
-        # Set method class property
-        $this->method = $algorithm;
+        # Set algorithm class property
+        $this->algorithm = $algorithm;
 
 	}
 
@@ -60,7 +60,7 @@ class Cipher {
 
             # Only encode letters; skip over spaces, symbols, etc.
             if(ctype_alnum($character)) {
-                $algorithm = $this->method.$encodeOrDecode;
+                $algorithm = $this->algorithm.$encodeOrDecode;
                 $character = $this->$algorithm($character);
             }
 
@@ -141,4 +141,4 @@ class Cipher {
         }
     }
 
-} # end of class
+} # eoc

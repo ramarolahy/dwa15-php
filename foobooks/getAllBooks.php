@@ -1,10 +1,10 @@
 <?php
 require('tools.php');
-require('Books.php');
+require('Library.php');
 require('../Form.php');
 
 # Instantiate the objects we'll need
-$library = new Books('books.json');
+$library = new Library('books.json');
 $form = new DWA\Form($_GET);
 
 $errors = [];
@@ -17,7 +17,7 @@ if($form->isSubmitted()) {
 
     $errors = $form->validate(
         [
-            'searchTerm' => 'required|email',
+            'searchTerm' => 'required',
         ]
     );
 

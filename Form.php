@@ -177,7 +177,7 @@ class Form {
 	* Returns boolean if given value contains only letters/numbers
 	*/
     private function alphaNumeric($value) {
-        return ctype_alnum($value);
+        return ctype_alnum(str_replace(' ','', $value));
     }
 
 
@@ -185,7 +185,7 @@ class Form {
 	* Returns boolean if given value contains only letters
 	*/
     private function alpha($value) {
-        return ctype_alpha($value);
+        return ctype_alpha(str_replace(' ','', $value));
     }
 
 
@@ -193,7 +193,7 @@ class Form {
 	* Returns boolean if given value contains only numbers
 	*/
     private function numeric($value) {
-        return ctype_digit($value);
+        return ctype_digit(str_replace(' ','', $value));
     }
 
 

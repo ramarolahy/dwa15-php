@@ -1,6 +1,6 @@
 <?php
 
-class Books {
+class Library {
 
 
     /**
@@ -22,7 +22,7 @@ class Books {
 
 
     /**
-	* Getter
+	* Getter for $books property
 	*/
     public function getAll() {
         return $this->books;
@@ -62,4 +62,4 @@ class Books {
 
     }
 
-}
+} # end of class

@@ -5,8 +5,8 @@ class Cipher {
     /**
 	* Properties
 	*/
-	private $method; # What cipher method to use (e.g. vowels, shift)
-    private $methods = ['vowels', 'shift']; # Array of available methods
+	private $algorithm; # What cipher algorithm to use (e.g. vowels, shift)
+    private $algorithms = ['vowels', 'shift']; # Array of available algorithms
     private $alphabet; # Array of letters a-z
     private $vowels; # Array of vowels
 
@@ -14,19 +14,19 @@ class Cipher {
     /**
 	* Magic method that's invoked whenever an object of this class is instantiated
 	*/
-	public function __construct($method = 'vowels') {
+	public function __construct($algorithm = 'vowels') {
 
         # Set alphabet and vowels class properties
         $this->alphabet = str_split('abcdefghijklmnopqrstuvwxyz');
         $this->vowels = str_split('aeiou');
 
         # Confirm the cipher method exists
-        if(!in_array($method, $this->methods)) {
-            throw new Exception("Cipher method `".$method."` not found", 1);
+        if(!in_array($algorithm, $this->algorithms)) {
+            throw new Exception("Cipher algorithm `".$algorithm."` not found", 1);
         }
 
         # Set method class property
-        $this->method = $method;
+        $this->method = $algorithm;
 
 	}
 
@@ -59,9 +59,9 @@ class Cipher {
             $character = strtolower($character);
 
             # Only encode letters; skip over spaces, symbols, etc.
-            if(ctype_alpha($character)) {
-                $method = $this->method.$encodeOrDecode;
-                $character = $this->$method(strtolower($character));
+            if(ctype_alnum($character)) {
+                $algorithm = $this->method.$encodeOrDecode;
+                $character = $this->$algorithm($character);
             }
 
             $results .= $character;
@@ -79,6 +79,9 @@ class Cipher {
 	*/
     private function shiftEncode(String $letter) {
 
+        if(ctype_digit($letter))
+            return $letter;
+
         $position = array_search($letter, $this->alphabet);
 
         $position += 1;
@@ -94,6 +97,9 @@ class Cipher {
 	*
 	*/
     private function shiftDecode(String $letter) {
+
+        if(ctype_digit($letter))
+            return $letter;
 
         $position = array_search($letter, $this->alphabet);
 
@@ -127,7 +133,7 @@ class Cipher {
 	*/
     private function vowelsDecode(String $letter) {
 
-        if(!in_array($letter, $this->alphabet)) {
+        if(isset($this->vowels[$letter])) {
             return $this->vowels[$letter];
         }
         else {

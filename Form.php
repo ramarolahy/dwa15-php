@@ -56,7 +56,7 @@ class Form {
     * Example usage:
     *   <input type='text' name='email' value='<?=$form->prefill($email, "example@gmail.com")?>'>
 	*/
-    public function prefill(string $field, $default = '', $sanitize = true) {
+    public function prefill(\string $field, $default = '', $sanitize = true) {
 
         if(isset($this->request[$field])) {
             if($sanitize) {

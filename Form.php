@@ -14,7 +14,7 @@ class Form {
     /**
 	*
 	*/
-    public function __construct(array $postOrGet) {
+    public function __construct($postOrGet) {
 
         # Store form data (POST or GET) in a class property called $request
         $this->request = $postOrGet;
@@ -56,7 +56,7 @@ class Form {
     * Example usage:
     *   <input type='text' name='email' value='<?=$form->prefill($email, "example@gmail.com")?>'>
 	*/
-    public function prefill(\string $field, $default = '', $sanitize = true) {
+    public function prefill($field, $default = '', $sanitize = true) {
 
         if(isset($this->request[$field])) {
             if($sanitize) {
@@ -105,7 +105,7 @@ class Form {
     *
     * Note: Stops after the first error for a given field
 	*/
-    public function validate(array $fieldsToValidate) {
+    public function validate($fieldsToValidate) {
 
         $errors = [];
 
@@ -151,7 +151,7 @@ class Form {
     * It'll return a String message appropriate for that rule
     * Default message is used if no message is set for a given rule
 	*/
-    private function getErrorMessage(string $rule, $parameter = null) {
+    private function getErrorMessage($rule, $parameter = null) {
 
         $language = [
             'alphaNumeric' => ' can only contain letters or numbers.',

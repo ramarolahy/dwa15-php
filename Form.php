@@ -50,6 +50,55 @@ class Form {
 
 
     /**
+	* Use in display files to prefill the values of fields if those values are in the request
+    * Second optional parameter lets you set a default value if value does not exist
+    *
+    * Example usage:
+    *   <input type='text' name='email' value='<?=$form->prefill($email, "example@gmail.com")?>'>
+	*/
+    public function prefill(String $field, $default = '', $sanitize = true) {
+
+        if(isset($this->request[$field])) {
+            if($sanitize) {
+                return $this->sanitize($this->request[$field]);
+            }
+            else {
+                return $this->request[$field];
+            }
+        }
+        else {
+            return $default;
+        }
+    }
+
+
+    /**
+	* Returns True if *either* GET or POST have been submitted
+	*/
+    public function isSubmitted() {
+        return $_SERVER['REQUEST_METHOD'] == 'POST' || !empty($_GET);
+    }
+
+
+    /**
+    * Strips HTML characters; works with arrays or scalar values
+    */
+    public function sanitize($mixed = null) {
+
+        # Base case
+        if(!is_array($mixed)) {
+            return htmlentities($mixed, ENT_QUOTES, "UTF-8");
+        }
+        else {
+            return sanitize(array_shift($mixed));
+        }
+
+        return $mixed;
+
+    }
+
+
+    /**
 	* Given an array of fields => validation rules
     * Will loop through each field's rules
     * Returns an array of error messages
@@ -122,59 +171,10 @@ class Form {
     }
 
 
-    /**
-	* Use in display files to prefill the values of fields if those values are in the request
-    * Second optional parameter lets you set a default value if value does not exist
-    *
-    * Example usage:
-    *   <input type='text' name='email' value='<?=$form->prefill($email, "example@gmail.com")?>'>
-	*/
-    public function prefill(String $field, $default = '', $sanitize = true) {
-
-        if(isset($this->request[$field])) {
-            if($sanitize) {
-                return $this->sanitize($this->request[$field]);
-            }
-            else {
-                return $this->request[$field];
-            }
-        }
-        else {
-            return $default;
-        }
-    }
-
-
-    /**
-	* Returns True if *either* GET or POST have been submitted
-	*/
-    public function isSubmitted() {
-        return $_SERVER['REQUEST_METHOD'] == 'POST' || !empty($_GET);
-    }
-
-
-    /**
-    * Strips HTML characters; works with arrays or scalar values
-    */
-    public function sanitize($mixed = null) {
-
-        # Base case
-        if(!is_array($mixed)) {
-            return htmlentities($mixed, ENT_QUOTES, "UTF-8");
-        }
-        else {
-            return sanitize(array_shift($mixed));
-        }
-
-        return $mixed;
-
-    }
-
-
     ### VALIDATION METHODS FOUND BELOW HERE ###
 
     /**
-	* Returns boolean if given value contains only letters/numbers
+	* Returns boolean if given value contains only letters/numbers/spaces
 	*/
     private function alphaNumeric($value) {
         return ctype_alnum(str_replace(' ','', $value));
@@ -182,7 +182,7 @@ class Form {
 
 
     /**
-	* Returns boolean if given value contains only letters
+	* Returns boolean if given value contains only letters/spaces
 	*/
     private function alpha($value) {
         return ctype_alpha(str_replace(' ','', $value));

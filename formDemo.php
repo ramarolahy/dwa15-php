@@ -1,22 +1,5 @@
 <?php
-require('Tools.php');
-require('Form.php');
-
-use DWA\Tools;
-
-$form = new DWA\Form($_GET);
-
-$errors = $form->validate(
-    [
-        'email' => 'required|email',
-        'username' => 'alphaNumeric',
-        'year' => 'numeric',
-        'age' => 'min:16',
-        'score' => 'max:5',
-        'rank' => 'numeric|min:0|max:5',
-    ]
-);
-
+require('formDemoLogic.php');
 ?>
 
 <!DOCTYPE html>
@@ -27,7 +10,7 @@ $errors = $form->validate(
     <meta charset='utf-8'>
     <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet'>
     <link href='https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css' rel='stylesheet'>
-    <link href='css/styles.css' rel='stylesheet'>
+    <link href='styles.css' rel='stylesheet'>
 
 </head>
 <body>
@@ -56,7 +39,7 @@ $errors = $form->validate(
 
         <input type='submit' class='btn'>
 
-        <?php if($errors): ?>
+        <?php if(isset($errors)): ?>
             <div class='alert alert-danger'>
                 <ul>
                     <?php foreach($errors as $error): ?>
@@ -67,7 +50,5 @@ $errors = $form->validate(
         <?php endif; ?>
 
     </form>
-
-
 
 </body>

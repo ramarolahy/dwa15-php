@@ -1,5 +1,4 @@
 <?php
-require('tools.php');
 require('Library.php');
 require('../Form.php');
 
@@ -9,7 +8,6 @@ $form = new DWA\Form($_GET);
 
 $errors = [];
 
-# Form validation
 if($form->isSubmitted()) {
 
     $searchTerm = $form->get('searchTerm', $default = ''); # String

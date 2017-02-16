@@ -32,14 +32,6 @@ class Library {
     /**
 	*
 	*/
-    public function getCount() {
-        return count($this->books);
-    }
-
-
-    /**
-	*
-	*/
     public function getByTitle(string $title, $caseSensitive = false) {
 
         $filteredBooks = [];

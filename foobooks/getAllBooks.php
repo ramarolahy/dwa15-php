@@ -1,6 +1,7 @@
 <?php
 require('Library.php');
 require('../Form.php');
+require('../Tools.php');
 
 # Instantiate the objects we'll need
 $library = new Library('books.json');

@@ -41,7 +41,7 @@
 
 	<?php elseif($form->isSubmitted()): ?>
 
-        <div class='alert alert-info'>Searched for: <?=sanitize($searchTerm)?></div>
+        <div class='alert alert-info'>Searched for: <?=$form->sanitize($searchTerm)?></div>
 
 	    <?php if(!$haveResults): ?>
 	        No books found

@@ -32,7 +32,7 @@ class Library {
     /**
 	*
 	*/
-    public function getByTitle(string $title, $caseSensitive = false) {
+    public function getByTitle($title, $caseSensitive = false) {
 
         $filteredBooks = [];
 
@@ -46,7 +46,7 @@ class Library {
             }
 
             if($match)
-                $filteredBooks[] = $book;
+                $filteredBooks[$thisTitle] = $book;
 
         }
 

@@ -19,7 +19,7 @@ $phrases = [
 ];
 
 $mixedBag = [
-    False, # Booleans
+    false, # Booleans
     4.0, # Floats
     1, # Integers
     ['a', 'b', 'c'] # Even other Arrays!
@@ -42,7 +42,7 @@ $countries = [
 
 
 # Update the array so that all the country names are uppercase
-foreach($countries as $countryCode => &$country) {
+foreach ($countries as $countryCode => &$country) {
     $country['name'] = strtoupper($country['name']);
 }
 

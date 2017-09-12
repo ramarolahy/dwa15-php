@@ -4,13 +4,12 @@ require('../Form.php');
 require('../Tools.php');
 
 # Instantiate the objects we'll need
-$library = new Library('books.json');
+$library = new DWA\Library('books.json');
 $form = new DWA\Form($_GET);
 
 $errors = [];
 
-if($form->isSubmitted()) {
-
+if ($form->isSubmitted()) {
     $searchTerm = $form->get('searchTerm', $default = ''); # String
     $caseSensitive = $form->isChosen('caseSensitive'); # Boolean
 
@@ -20,11 +19,11 @@ if($form->isSubmitted()) {
         ]
     );
 
-    if($errors)
+    if ($errors) {
         $books = [];
-    else
+    } else {
         $books = $library->getByTitle($searchTerm, $caseSensitive);
+    }
 
     $haveResults = (count($books) == 0) ? false : true;
-
 }

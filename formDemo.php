@@ -39,10 +39,10 @@ require('formDemoLogic.php');
 
         <input type='submit' class='btn'>
 
-        <?php if(isset($errors)): ?>
+        <?php if (isset($errors)) :?>
             <div class='alert alert-danger'>
                 <ul>
-                    <?php foreach($errors as $error): ?>
+                    <?php foreach ($errors as $error) :?>
                         <li><?=$error?></li>
                     <?php endforeach; ?>
                 </ul>

@@ -4,12 +4,12 @@
 <html>
 <head>
 
-	<title>Foobooks</title>
-	<meta charset='utf-8'>
+    <title>Foobooks</title>
+    <meta charset='utf-8'>
 
     <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet'>
-	<link href='https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css' rel='stylesheet'>
-	<link href='css/styles.css' rel='stylesheet'>
+    <link href='https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css' rel='stylesheet'>
+    <link href='css/styles.css' rel='stylesheet'>
 
 </head>
 <body>
@@ -21,7 +21,7 @@
         <label for='searchTerm'>Search by title:</label>
         <input type='text' name='searchTerm' required id='searchTerm' value='<?=$form->prefill('searchTerm')?>'>
 
-        <input type='checkbox' name='caseSensitive' <?php if($form->isChosen('caseSensitive')) echo 'CHECKED' ?>>
+        <input type='checkbox' name='caseSensitive' <?php if ($form->isChosen('caseSensitive')) : echo 'CHECKED' ?>>
         <label>Make case sensitive</label>
 
         <br>
@@ -29,37 +29,37 @@
 
     </form>
 
-	<?php if($errors): ?>
+    <?php if ($errors) : ?>
 
-		<div class='alert alert-danger'>
-			<ul>
-				<?php foreach($errors as $error): ?>
-					<li><?=$error?></li>
-				<?php endforeach; ?>
-			</ul>
-		</div>
+        <div class='alert alert-danger'>
+            <ul>
+                <?php foreach ($errors as $error) : ?>
+                    <li><?=$error?></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
 
-	<?php elseif($form->isSubmitted()): ?>
+    <?php elseif ($form->isSubmitted()) :?>
 
         <div class='alert alert-info'>Searched for: <?=$form->sanitize($searchTerm)?></div>
 
-	    <?php if(!$haveResults): ?>
-	        No books found
-	    <?php endif; ?>
+        <?php if (!$haveResults) : ?>
+            No books found
+        <?php endif; ?>
 
-	    <?php foreach($books as $title => $book): ?>
+        <?php foreach ($books as $title => $book) : ?>
 
-	        <div class='book'>
-	            <h2><?=$title?></h2>
+            <div class='book'>
+                <h2><?=$title?></h2>
 
-	            By <?=$book['author']?><br>
+                By <?=$book['author']?><br>
 
-	            Published <?=$book['published']?>
-	        </div>
+                Published <?=$book['published']?>
+            </div>
 
-	    <?php endforeach; ?>
+        <?php endforeach; ?>
 
-	<?php endif; ?>
+    <?php endif; ?>
 
 </body>
 </html>

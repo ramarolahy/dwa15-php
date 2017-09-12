@@ -3,8 +3,7 @@ require('Form.php');
 
 $form = new DWA\Form($_GET);
 
-if($form->isSubmitted()) {
-
+if ($form->isSubmitted()) {
     $errors = $form->validate(
         [
             'email' => 'required|email',
@@ -15,5 +14,4 @@ if($form->isSubmitted()) {
             'rank' => 'numeric|min:0|max:5',
         ]
     );
-    
 }

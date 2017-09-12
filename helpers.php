@@ -3,7 +3,8 @@
 /**
 *
 */
-function dump($mixed = null) {
+function dump($mixed = null)
+{
     echo '<pre>';
     var_dump($mixed);
     echo '</pre>';
@@ -13,13 +14,15 @@ function dump($mixed = null) {
 /**
 *
 */
-function sanitize($mixed = null) {
+function sanitize($mixed = null)
+{
 
-    if(!is_array($mixed)) {
+    if (!is_array($mixed)) {
         return convertHtmlEntities($mixed);
     }
 
-    function array_map_recursive($callback, $array) {
+    function array_map_recursive($callback, $array)
+    {
         $func = function ($item) use (&$func, &$callback) {
             return is_array($item) ? array_map($func, $item) : call_user_func($callback, $item);
         };
@@ -34,6 +37,7 @@ function sanitize($mixed = null) {
 /**
 *
 */
-function convertHtmlEntities($mixed) {
+function convertHtmlEntities($mixed)
+{
     return htmlentities($mixed, ENT_QUOTES, "UTF-8");
 }

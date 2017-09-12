@@ -3,7 +3,7 @@
 # Not including full HTML structure
 # Code islands in HTML include php logic
 
-require('tools.php');
+require('helpers.php');
 require('Cipher.php');
 ?>
 

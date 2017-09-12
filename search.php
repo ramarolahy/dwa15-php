@@ -1,6 +1,6 @@
 <?php
 
-require('tools.php');
+require('helpers.php');
 
 if(isset($_COOKIE['recentSearch'])) {
     $recentSearch = $_COOKIE['recentSearch'];

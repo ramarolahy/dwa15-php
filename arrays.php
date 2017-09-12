@@ -1,6 +1,6 @@
 <?php
 
-require('tools.php');
+require('helpers.php');
 
 $translations =
 [
@@ -39,7 +39,6 @@ $countries = [
         'languages' => ['Spanish'],
     ],
 ];
-
 
 
 # Update the array so that all the country names are uppercase

@@ -1,6 +1,6 @@
 <?php
 
-require('tools.php');
+require('helpers.php');
 
 
 $results = '';

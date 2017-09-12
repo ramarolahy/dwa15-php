@@ -1,7 +1,7 @@
 <?php
 
 # Import the tools
-require('tools.php');
+require('helpers.php');
 
 # Then test them out:
 dump('hi');

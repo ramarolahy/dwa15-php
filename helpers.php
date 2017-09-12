@@ -28,10 +28,12 @@ function sanitize($mixed = null) {
     }
 
     return array_map_recursive('convertHtmlEntities', $mixed);
-
 }
 
 
+/**
+*
+*/
 function convertHtmlEntities($mixed) {
     return htmlentities($mixed, ENT_QUOTES, "UTF-8");
 }

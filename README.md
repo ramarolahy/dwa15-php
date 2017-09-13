@@ -1,3 +1,2 @@
-Exercise solutions from the CSCI E-15 PHP notes.
-
-View working demos of these examples at <http://php-practice.dwa15.com>
+## Demos in action: <http://php-practice.dwa15.com>
+## Code for demos: <https://github.com/susanBuck/dwa15-php-practice>

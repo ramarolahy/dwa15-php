@@ -1,22 +1,19 @@
 <?php
 
-require('tools.php');
+require('../helpers.php');
 
 dump($_POST);
 
 # If no days were checked...
-if(!isset($_POST['days'])) {
+if (!isset($_POST['days'])) {
     $results = 'No days were selected';
     $alertType = 'alert-danger';
-}
-# If days were checked...
-else {
-
+} else {
     $results = 'Days chosen: ';
 
     $alertType = 'alert-info';
 
-    foreach($_POST['days'] as $day) {
+    foreach ($_POST['days'] as $day) {
         $results .= $day.', ';
     }
 

@@ -61,7 +61,7 @@ class Form
     * Second optional parameter lets you set a default value if value does not exist
     *
     * Example usage:
-    *   <input type='text' name='email' value='<?=$form->prefill($email, "example@gmail.com")?>'>
+    *   <input type='text' name='email' value='<?=$form->prefill('email', "example@gmail.com")?>'>
     */
     public function prefill($field, $default = '', $sanitize = true)
     {
@@ -93,7 +93,7 @@ class Form
     public function sanitize($mixed = null)
     {
         if (!is_array($mixed)) {
-            return convertHtmlEntities($mixed);
+            return $this->convertHtmlEntities($mixed);
         }
 
         function arrayMapRecursive($callback, $array)
@@ -110,11 +110,22 @@ class Form
 
 
     /**
+    *
+    */
+    private function convertHtmlEntities($mixed)
+    {
+        return htmlentities($mixed, ENT_QUOTES, "UTF-8");
+    }
+
+
+    /**
     * Given an array of fields => validation rules
     * Will loop through each field's rules
     * Returns an array of error messages
     *
-    * Note: Stops after the first error for a given field
+    * Stops after the first error for a given field
+    *
+    * Available rules: alphaNumeric, alpha, numeric, required, email, min:x, max:x
     */
     public function validate($fieldsToValidate)
     {

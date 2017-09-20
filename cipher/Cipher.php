@@ -13,7 +13,6 @@ class Cipher
     private $alphabet; # Array of letters a-z
     private $vowels; # Array of vowels
 
-
     /**
     * Magic method that's invoked whenever an object of this class is instantiated
     */

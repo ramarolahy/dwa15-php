@@ -92,15 +92,20 @@ class Form
     */
     public function sanitize($mixed = null)
     {
-
-        # Base case
         if (!is_array($mixed)) {
-            return htmlentities($mixed, ENT_QUOTES, "UTF-8");
-        } else {
-            return sanitize(array_shift($mixed));
+            return convertHtmlEntities($mixed);
         }
 
-        return $mixed;
+        function arrayMapRecursive($callback, $array)
+        {
+            $func = function ($item) use (&$func, &$callback) {
+                return is_array($item) ? array_map($func, $item) : call_user_func($callback, $item);
+            };
+
+            return array_map($func, $array);
+        }
+
+        return arrayMapRecursive('convertHtmlEntities', $mixed);
     }
 
 

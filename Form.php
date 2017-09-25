@@ -195,7 +195,7 @@ class Form
     /**
     * Returns boolean if given value contains only letters/numbers/spaces
     */
-    private function alphaNumeric($value)
+    protected function alphaNumeric($value)
     {
         return ctype_alnum(str_replace(' ', '', $value));
     }
@@ -204,7 +204,7 @@ class Form
     /**
     * Returns boolean if given value contains only letters/spaces
     */
-    private function alpha($value)
+    protected function alpha($value)
     {
         return ctype_alpha(str_replace(' ', '', $value));
     }
@@ -213,7 +213,7 @@ class Form
     /**
     * Returns boolean if given value contains only numbers
     */
-    private function numeric($value)
+    protected function numeric($value)
     {
         return ctype_digit(str_replace(' ', '', $value));
     }
@@ -222,7 +222,7 @@ class Form
     /**
     * Returns boolean if the given value is not blank
     */
-    private function required($value)
+    protected function required($value)
     {
         $value = trim($value);
         return $value != '' && isset($value) && !is_null($value);
@@ -232,7 +232,7 @@ class Form
     /**
     * Returns boolean if the given value is a valid email address
     */
-    private function email($value)
+    protected function email($value)
     {
         return filter_var($value, FILTER_VALIDATE_EMAIL);
     }
@@ -241,7 +241,7 @@ class Form
     /**
     * Returns value if the given value is GREATER THAN (non-inclusive) the given parameter
     */
-    private function min($value, $parameter)
+    protected function min($value, $parameter)
     {
         return floatval($value) > floatval($parameter);
     }
@@ -250,7 +250,7 @@ class Form
     /**
     * Returns value if the given value is LESS THAN (non-inclusive) the given parameter
     */
-    private function max($value, $parameter)
+    protected function max($value, $parameter)
     {
         return floatval($value) < floatval($parameter);
     }

@@ -25,7 +25,7 @@ class Cipher
 
         # Confirm the cipher method exists
         if (!in_array($algorithm, $this->algorithms)) {
-            throw new Exception("Cipher algorithm `".$algorithm."` not found", 1);
+            throw new \Exception("Cipher algorithm `".$algorithm."` not found", 1);
         }
 
         # Set algorithm class property

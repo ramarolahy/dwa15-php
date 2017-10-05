@@ -2,6 +2,8 @@
 require('helpers.php');
 require('Cipher.php');
 
+use DWA\Cipher;
+
 $cipherA = new Cipher('shift');
 dump('Hello World = '.$cipherA->encode('Hello World'));
 dump('zoo = '.$cipherA->encode('zoo'));

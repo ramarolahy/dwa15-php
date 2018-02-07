@@ -1,22 +1,17 @@
 <?php
-require('radiosLogic.php');
+require 'radios-logic.php';
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
-
     <title>Radio Example</title>
     <meta charset='utf-8'>
-    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet'>
-    <link href='https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css' rel='stylesheet'>
-    <link href='../styles.css' rel='stylesheet'>
-
+    <link href='../css/styles.css' rel='stylesheet'>
 </head>
 <body>
-    <h1>Radios Example</h1>
+    <h1>Radios</h1>
 
-    <form method='POST' action='radios.php'>
+    <form method='GET' action='radios.php'>
         <fieldset class='radios'>
             <legend>Select which day you're available</legend>
             <label><input type='radio' name='day' value='mon' <?php if ($day == 'mon') echo 'CHECKED'?>> Monday</label>
@@ -35,10 +30,6 @@ require('radiosLogic.php');
         <?php endif; ?>
 
     </form>
-
-    <footer>
-        <a href='/forms/'>&larr; Other form examples</a>
-    </footer>
 
 </body>
 </html>

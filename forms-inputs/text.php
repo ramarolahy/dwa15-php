@@ -1,21 +1,18 @@
-<?php require('inputsLogic.php'); ?>
-
+<?php
+require 'text-logic.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
-
     <title>Simple Input Examples</title>
     <meta charset='utf-8'>
-    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet'>
-    <link href='https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css' rel='stylesheet'>
-    <link href='../styles.css' rel='stylesheet'>
-
+    <link href='../css/styles.css' rel='stylesheet'>
 </head>
 <body>
 
-    <h1>Simple Input Examples</h1>
+    <h1>Text inputs</h1>
 
-    <form method='POST' action='inputs.php'>
+    <form method='GET' action='text.php'>
 
         <input type='hidden' name='userId' value='<?=$userId?>'>
 
@@ -31,10 +28,6 @@
         <input type='submit' class='btn btn-primary btn-sm'>
 
     </form>
-
-    <footer>
-        <a href='/forms/'>&larr; Other form examples</a>
-    </footer>
 
 </body>
 </html>

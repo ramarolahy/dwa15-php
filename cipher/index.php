@@ -1,17 +1,13 @@
 <?php
-require('helpers.php');
+require('../includes/helpers.php');
 require('logic.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <title>Secret Cipher</title>
     <meta charset='utf-8'>
-
-    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet'>
     <link href='css/styles.css' rel='stylesheet'>
-
 </head>
 <body>
 

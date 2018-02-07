@@ -1,6 +1,4 @@
 <?php
-require('../helpers.php');
-
 if (isset($_GET['answer'])) {
     $answer = strtolower($_GET['answer']);
 

@@ -1,12 +1,12 @@
 <?php
-require('../helpers.php');
+require '../includes/helpers.php';
 
-if ($_POST) {
-    dump($_POST); # Output from logic, only for debugging purposes to see the contents of POST
+if ($_GET) {
+    dump($_GET); # Output from logic, only for debugging purposes to see the contents of POST
 }
 
 # If no days were checked...
-if (!isset($_POST['days'])) {
+if (!isset($_GET['days'])) {
     $results = 'No days were selected';
     $alertType = 'alert-danger';
 } else {
@@ -14,7 +14,7 @@ if (!isset($_POST['days'])) {
 
     $alertType = 'alert-info';
 
-    foreach ($_POST['days'] as $day) {
+    foreach ($_GET['days'] as $day) {
         $results .= $day.', ';
     }
 

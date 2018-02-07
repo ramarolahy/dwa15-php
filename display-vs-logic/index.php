@@ -1,14 +1,13 @@
-<?php require('logic.php'); ?>
+<?php
+require '../includes/helpers.php';
+require 'logic.php';
+?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <title>Display vs. Logic example</title>
     <meta charset='utf-8'>
-
-    <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
-
 </head>
 <body>
 
@@ -19,7 +18,6 @@
     </form>
 
     <?php if (isset($correct)) : ?>
-
         <?php if ($correct) : ?>
             <div class='positive'>
                 <i class="fa fa-smile-o"></i> <?=sanitize($answer)?> is correct!
@@ -29,9 +27,7 @@
                 <i class="fa fa-frown-o"></i> <?=sanitize($answer)?> is incorrect; please try again.
             </div>
         <?php endif; ?>
-
     <?php endif ?>
-
 
 </body>
 </html>

@@ -1,5 +1,4 @@
 <?php
-
 require('Cipher.php');
 
 use DWA\Cipher;

@@ -1,12 +1,11 @@
 <?php
-
-require('helpers.php');
+require('includes/helpers.php');
 
 $translations =
-[
-    'hello' => 'hola',
-    'goodbye' => 'adios',
-];
+    [
+        'hello' => 'hola',
+        'goodbye' => 'adios',
+    ];
 
 $translations['good afternoon'] = 'buenas tardes';
 
@@ -39,7 +38,6 @@ $countries = [
         'languages' => ['Spanish'],
     ],
 ];
-
 
 # Update the array so that all the country names are uppercase
 foreach ($countries as $countryCode => &$country) {

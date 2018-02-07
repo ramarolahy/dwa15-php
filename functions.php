@@ -1,10 +1,8 @@
 <?php
-
-require('helpers.php');
+require('includes/helpers.php');
 
 function getCelsius(int $temperature, $includeUnit = true)
 {
-
     $result = ($temperature - 32) / 1.8;
 
     if ($includeUnit) {

@@ -1,14 +1,9 @@
 <?php
 require '../includes/helpers.php';
 
-if ($_GET) {
-    dump($_GET); # Output from logic, only for debugging purposes to see the contents of POST
-}
+$day = $_GET['day'] ?? null;
 
-$day = '';
-
-if (isset($_GET['day'])) {
-    $day = $_GET['day'];
+if ($day) {
 
     if ($day == 'choose') {
         $alertType = 'alert-danger';

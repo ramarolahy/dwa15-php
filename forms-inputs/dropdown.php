@@ -6,6 +6,11 @@ require 'dropdown-logic.php';
 <head>
     <title>Dropdown Example</title>
     <meta charset='utf-8'>
+    <link href='../css/styles.css' rel='stylesheet'>
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
+          rel='stylesheet' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm'
+          crossorigin='anonymous'>
+
 </head>
 <body>
 
@@ -15,17 +20,17 @@ require 'dropdown-logic.php';
         <label for='day'>Select which day you're available</label>
         <select name='day' id='day'>
             <option value='choose'>Choose one...</option>
-            <option value='mon' <?php if ($day == 'mon') echo 'SELECTED'?>>Monday</option>
-            <option value='tue' <?php if ($day == 'tue') echo 'SELECTED'?>>Tuesday</option>
-            <option value='wed' <?php if ($day == 'wed') echo 'SELECTED'?>>Wednesday</option>
-            <option value='thu' <?php if ($day == 'thu') echo 'SELECTED'?>>Thursday</option>
-            <option value='fri' <?php if ($day == 'fri') echo 'SELECTED'?>>Friday</option>
+            <option value='mon' <?php if ($day == 'mon') echo 'selected'?>>Monday</option>
+            <option value='tue' <?php if ($day == 'tue') echo 'selected'?>>Tuesday</option>
+            <option value='wed' <?php if ($day == 'wed') echo 'selected'?>>Wednesday</option>
+            <option value='thu' <?php if ($day == 'thu') echo 'selected'?>>Thursday</option>
+            <option value='fri' <?php if ($day == 'fri') echo 'selected'?>>Friday</option>
         </select>
 
-        <input type='submit' value='Submit'>
+        <input type='submit' value='Check availability' class='btn btn-primary btn-sm'>
 
-        <?php if ($_POST) : ?>
-            <div class="alert <?=$alertType?>" role="alert">
+        <?php if ($_GET) : ?>
+            <div class='alert <?=$alertType?>' role='alert'>
                 <?=$results?>
             </div>
         <?php endif; ?>

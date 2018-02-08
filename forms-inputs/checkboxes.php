@@ -7,34 +7,63 @@ require 'checkboxes-logic.php';
     <title>Checkboxes Example</title>
     <meta charset='utf-8'>
     <link href='../css/styles.css' rel='stylesheet'>
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'
+          rel='stylesheet' integrity='sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm'
+          crossorigin='anonymous'>
+
 </head>
 <body>
 
-    <h1>Checkboxes</h1>
+<h1>Checkboxes</h1>
 
-    <form method='GET' action='checkboxes.php'>
+<p>
+    This form demonstrates how to handle a group of related checkboxes.
+</p>
 
-        <!-- Trick to makes it so that if no checkboxes are selected, we still receive $_POST data -->
-        <input type='hidden' name='alwaysPost' value='0'>
+<form method='GET' action='checkboxes.php'>
 
-        <fieldset class='checkboxes'>
-            <legend>Select which days you're available</legend>
-            <label><input type='checkbox' name='days[]' value='mon' <?php if (strstr($results, 'mon')) echo 'CHECKED'?>> Monday</label>
-            <label><input type='checkbox' name='days[]' value='tue' <?php if (strstr($results, 'tue')) echo 'CHECKED'?>> Tuesday</label>
-            <label><input type='checkbox' name='days[]' value='wed' <?php if (strstr($results, 'wed')) echo 'CHECKED'?>> Wednesday</label>
-            <label><input type='checkbox' name='days[]' value='thu' <?php if (strstr($results, 'thu')) echo 'CHECKED'?>> Thursday</label>
-            <label><input type='checkbox' name='days[]' value='fri' <?php if (strstr($results, 'fri')) echo 'CHECKED'?>> Friday</label>
-        </fieldset>
+    <!-- Trick to makes it so that if no checkboxes are selected, we still receive form data -->
+    <input type='hidden' name='submitted' value='1'>
 
-        <input type='submit' value='Submit'>
+    <fieldset class='checkboxes'>
+        <legend>Select which days you're available</legend>
+        <ul>
+            <li>
+                <label><input type='checkbox'
+                              name='days[]'
+                              value='mon' <?php if (strstr($results, 'mon')) echo 'checked' ?>> Monday</label>
+            </li>
+            <li>
+                <label><input type='checkbox'
+                              name='days[]'
+                              value='tue' <?php if (strstr($results, 'tue')) echo 'checked' ?>> Tuesday</label>
+            </li>
+            <li>
+                <label><input type='checkbox'
+                              name='days[]'
+                              value='wed' <?php if (strstr($results, 'wed')) echo 'checked' ?>> Wednesday</label>
+            </li>
+            <li>
+                <label><input type='checkbox'
+                              name='days[]'
+                              value='thu' <?php if (strstr($results, 'thu')) echo 'checked' ?>> Thursday</label>
+            <li>
+                <label><input type='checkbox'
+                              name='days[]'
+                              value='fri' <?php if (strstr($results, 'fri')) echo 'checked' ?>> Friday</label>
+            </li>
+        </ul>
+    </fieldset>
 
-        <?php if ($_POST) : ?>
-            <div class="alert <?=$alertType?>" role="alert">
-                <?=$results?>
-            </div>
-        <?php endif; ?>
+    <input type='submit' value='Find availabilities' class='btn btn-primary btn-sm'>
 
-    </form>
+    <?php if ($submitted) : ?>
+        <div class='alert <?= $alertType ?>'>
+            <?= $results ?>
+        </div>
+    <?php endif; ?>
+
+</form>
 
 </body>
 </html>

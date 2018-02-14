@@ -1,21 +1,26 @@
 body {
-    margin:25px;
+    padding: 25px;
 }
 
 textarea {
-    width:300px;
-    height:100px;
+    width: 300px;
+    height: 100px;
+    display: block;
+}
+
+label {
+    font-weight: bold;
 }
 
 #definition {
-    font-style:italic;
+    font-style: italic;
 }
 
 #results {
-    font-size:20px;
-    border:1px solid black;
-    display:inline-block;
-    padding:20px;
-    font-family:Consolas;
-    margin-top:10px;
+    font-size: 20px;
+    border: 1px solid black;
+    display: inline-block;
+    padding: 20px;
+    font-family: Consolas, courier, monospace;
+    margin-top: 10px;
 }

@@ -35,7 +35,7 @@ require('logic.php');
                name='type'
                value='vowels' <?= (empty($_GET) or $_GET['type'] == 'vowels') ? 'checked' : '' ?>>
         <label for='vowels'>Vowel replacement</label>
-        <p>Vowels are replaced with their numerical equivalent where a=0, i=1, o=2, etc.</p>
+        <p>Vowels are replaced with their numerical equivalent where a=0, e=1, i=2, o=3, u=4</p>
 
         <input type='radio'
                name='type'

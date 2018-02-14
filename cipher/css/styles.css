@@ -16,6 +16,10 @@ label {
     font-style: italic;
 }
 
+form {
+    margin-bottom: 20px;
+}
+
 #results {
     font-size: 20px;
     border: 1px solid black;

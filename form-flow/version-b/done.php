@@ -2,7 +2,6 @@
 require('../../includes/helpers.php');
 require('done-logic.php');
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,12 +15,12 @@ require('done-logic.php');
 <h1>Book search</h1>
 <h2>Version B</h2>
 <p>
-    You searched for <strong><?= sanitize($searchTerm) ?></strong>.
+    You searched for <strong><?= sanitize($results['searchTerm']) ?></strong>.
 </p>
 
-<?php if ($haveBooks): ?>
+<?php if ($results['haveBooks']): ?>
     <h2>Results:</h2>
-    <?php foreach ($books as $title => $book): ?>
+    <?php foreach ($results['books'] as $title => $book): ?>
         <div class='book'>
             <?= $title; ?> by <?= $book['author'] ?>
             <img src='<?php echo $book['cover_url']; ?>' alt='Cover photo for <?= $title; ?>'>

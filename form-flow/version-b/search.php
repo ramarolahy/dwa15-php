@@ -1,4 +1,7 @@
 <?php
+# Start the session, since we'll be using it below
+session_start();
+
 # Get the search term from the form data
 $searchTerm = $_POST['searchTerm'] ?? false;
 
@@ -16,13 +19,12 @@ foreach ($books as $title => $book) {
 # Boolean as to whether we found any books
 $haveBooks = count($books) > 0;
 
-# Start the session
-session_start();
-
 # Store our data in the session
-$_SESSION['books'] = $books;
-$_SESSION['haveBooks'] = $haveBooks;
-$_SESSION['searchTerm'] = $searchTerm;
+$_SESSION['results'] = [
+    'books' => $books,
+    'haveBooks' => $haveBooks,
+    'searchTerm' => $searchTerm,
+];
 
 # Redirect visitor to confirmation page
 header('Location: done.php');

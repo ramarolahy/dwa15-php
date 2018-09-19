@@ -1,4 +1,5 @@
 <?php
+# Start the session, since we'll be using it below
 session_start();
 
 $searchTerm = $_GET['searchTerm'] ?? false;

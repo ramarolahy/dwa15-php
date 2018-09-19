@@ -2,14 +2,13 @@
 # Start the session
 session_start();
 
-# Check that we have data to work with; if not, send them back to search page
-if (!isset($_SESSION['searchTerm'])) {
-    header('Location: index.php');
+# Check that we have data to work with; if not, send them back to the start page
+if (!isset($_SESSION['results'])) {
+    header('Location: foobooks.php');
 }
 
-# Extract data from the session
-$books = $_SESSION['books'] ?? null;
-$haveBooks = $_SESSION['haveBooks'] ?? null;
-$searchTerm = $_SESSION['searchTerm'] ?? null;
+# Get the data from the session
+$results = $_SESSION['results'] ?? null;
 
+# Clear the session
 session_unset();

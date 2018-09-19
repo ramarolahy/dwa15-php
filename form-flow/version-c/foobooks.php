@@ -1,5 +1,6 @@
 <?php
-require 'logic.php';
+require('../../includes/helpers.php');
+require('logic.php');
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +14,7 @@ require 'logic.php';
 <h1>Book search</h1>
 <h2>Version C</h2>
 
-<form method='GET' action='index.php'>
+<form method='GET' action='search.php'>
 
     <label>Search for a book:
         <input type='text' name='searchTerm' value='The Great Gatsby'>
@@ -22,14 +23,14 @@ require 'logic.php';
     <input type='submit' value='Search'>
 </form>
 
-<?php if ($searchTerm): ?>
+<?php if (isset($results)): ?>
     <p>
-        You searched for <strong><?= sanitize($searchTerm) ?></strong>.
+        You searched for <strong><?= sanitize($results['searchTerm']) ?></strong>.
     </p>
 
-    <?php if ($haveBooks): ?>
+    <?php if ($results['haveBooks']): ?>
         <h2>Results:</h2>
-        <?php foreach ($books as $title => $book): ?>
+        <?php foreach ($results['books'] as $title => $book): ?>
             <div class='book'>
                 <?= $title; ?> by <?= $book['author'] ?>
                 <img src='<?php echo $book['cover_url']; ?>' alt='Cover photo for <?= $title; ?>'>

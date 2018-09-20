@@ -1,5 +1,5 @@
 <?php
-require 'today-logic.php';
+require('today-logic.php');
 ?>
 
 <!DOCTYPE html>

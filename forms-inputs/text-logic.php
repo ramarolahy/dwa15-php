@@ -1,5 +1,5 @@
 <?php
-require '../includes/helpers.php';
+require('../includes/helpers.php');
 
 $title = $_GET['title'] ?? '';
 $description = $_GET['description'] ?? '';

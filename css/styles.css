@@ -10,6 +10,10 @@ footer {
     margin-top: 10px;
 }
 
+.alert {
+    max-width: 300px;
+}
+
 label, legend {
     display: block;
     margin-top: 20px;
@@ -22,4 +26,24 @@ input, textarea, select {
 
 input[type='checkbox'], input[type='radio'] {
     display: inline;
+    margin-right: 0;
+    /* Next two lines prevent misalignment with text */
+    vertical-align: middle;
+    margin-top: -3px;
+}
+
+ul.checkboxes, ul.radios {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul.checkboxes li label, ul.radios li label {
+    margin-top: 0;
+    cursor: pointer;
+}
+
+
+a.return:link {
+    display: block;
+    margin-top: 10px;
 }

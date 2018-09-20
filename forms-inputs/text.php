@@ -34,5 +34,7 @@ require 'text-logic.php';
 
 </form>
 
+<a class='return' href='/forms-inputs'>&larr; Return to all form input examples</a>
+
 </body>
 </html>

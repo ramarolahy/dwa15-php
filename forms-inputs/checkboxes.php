@@ -14,7 +14,7 @@ require 'checkboxes-logic.php';
 </head>
 <body>
 
-<h1>Checkboxes</h1>
+<h1>Checkboxes Example</h1>
 
 <p>
     This form demonstrates how to handle a group of related checkboxes.
@@ -27,7 +27,7 @@ require 'checkboxes-logic.php';
 
     <fieldset class='checkboxes'>
         <legend>Select which days you're available</legend>
-        <ul>
+        <ul class='checkboxes'>
             <li>
                 <label><input type='checkbox'
                               name='days[]'
@@ -56,14 +56,18 @@ require 'checkboxes-logic.php';
     </fieldset>
 
     <input type='submit' value='Find availabilities' class='btn btn-primary btn-sm'>
-
-    <?php if ($submitted) : ?>
-        <div class='alert <?= $alertType ?>'>
-            <?= $results ?>
-        </div>
-    <?php endif; ?>
-
 </form>
+
+<?php if ($submitted) : ?>
+    <?php if (is_null($results)): ?>
+        <div class='alert alert-warning'>No Results</div>
+    <?php else: ?>
+        <div class='alert alert-primary'>You indicated you were available on these days: <?= $results ?></div>
+    <?php endif; ?>
+    </div>
+<?php endif; ?>
+
+<a class='return' href='/forms-inputs'>&larr; Return to all form input examples</a>
 
 </body>
 </html>

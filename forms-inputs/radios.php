@@ -12,27 +12,42 @@ require 'radios-logic.php';
           crossorigin='anonymous'>
 </head>
 <body>
-    <h1>Radios</h1>
+<h1>Radios Example</h1>
 
-    <form method='GET' action='radios.php'>
-        <fieldset class='radios'>
-            <legend>Select which day you're available</legend>
-            <label><input type='radio' name='day' value='mon' <?php if ($day == 'mon') echo 'checked'?>> Monday</label>
-            <label><input type='radio' name='day' value='tue' <?php if ($day == 'tue') echo 'checked'?>> Tuesday</label>
-            <label><input type='radio' name='day' value='wed' <?php if ($day == 'wed') echo 'checked'?>> Wednesday</label>
-            <label><input type='radio' name='day' value='thu' <?php if ($day == 'thu') echo 'checked'?>> Thursday</label>
-            <label><input type='radio' name='day' value='fri' <?php if ($day == 'fri') echo 'checked'?>> Friday</label>
-        </fieldset>
+<form method='GET' action='radios.php'>
+    <fieldset class='radios'>
+        <legend>Select which day you're available</legend>
+        <ul class='radios'>
+            <!-- Note that each radio has the same name of `day` -->
+            <li><label><input type='radio'
+                              name='day'
+                              value='mon' <?php if (isset($day) and $day == 'mon') echo 'checked' ?>> Monday</label>
+            <li><label><input type='radio'
+                              name='day'
+                              value='tue' <?php if (isset($day) and $day == 'tue') echo 'checked' ?>> Tuesday</label>
+            <li><label><input type='radio'
+                              name='day'
+                              value='wed' <?php if (isset($day) and $day == 'wed') echo 'checked' ?>> Wednesday</label>
+            <li><label><input type='radio'
+                              name='day'
+                              value='thu' <?php if (isset($day) and $day == 'thu') echo 'checked' ?>> Thursday</label>
+            <li><label><input type='radio'
+                              name='day'
+                              value='fri' <?php if (isset($day) and $day == 'fri') echo 'checked' ?>> Friday</label>
+        </ul>
+    </fieldset>
 
-        <input type='submit' value='Check availability' class='btn btn-primary btn-sm'>
+    <input type='submit' value='Check availability' class='btn btn-primary btn-sm'>
 
-        <?php if ($_GET) : ?>
-            <div class="alert alert-info" role="alert">
-                Day selected: <?=ucfirst($day)?>
-            </div>
-        <?php endif; ?>
+    <?php if ($_GET) : ?>
+        <div class='alert alert-info' role='alert'>
+            You selected: <?= ucfirst($day) ?>
+        </div>
+    <?php endif; ?>
 
-    </form>
+</form>
+
+<a class='return' href='/forms-inputs'>&larr; Return to all form input examples</a>
 
 </body>
 </html>

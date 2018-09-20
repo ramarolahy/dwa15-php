@@ -1,5 +1,5 @@
 <?php
-require('Cipher.php');
+require 'Cipher.php';
 
 use DWA\Cipher;
 

@@ -1,6 +1,6 @@
 <?php
-require('../../includes/helpers.php');
-require('done-logic.php');
+require '../../includes/helpers.php';
+require 'done-logic.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

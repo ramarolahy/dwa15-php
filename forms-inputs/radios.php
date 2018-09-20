@@ -1,5 +1,5 @@
 <?php
-require('radios-logic.php');
+require 'radios-logic.php';
 ?>
 <!DOCTYPE html>
 <html>

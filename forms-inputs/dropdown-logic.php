@@ -1,5 +1,5 @@
 <?php
-require('../includes/helpers.php');
+require '../includes/helpers.php';
 
 $day = $_GET['day'] ?? null;
 

@@ -1,6 +1,6 @@
 <?php
-require('../../includes/helpers.php');
-require('logic.php');
+require '../../includes/helpers.php';
+require 'logic.php';
 ?>
 
 <!DOCTYPE html>

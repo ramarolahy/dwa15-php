@@ -1,5 +1,5 @@
 <?php
-require('validation-logic.php');
+require 'validation-logic.php';
 ?>
 <!DOCTYPE html>
 <html>

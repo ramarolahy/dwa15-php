@@ -1,5 +1,5 @@
 <?php
-require('includes/helpers.php');
+require 'includes/helpers.php';
 
 function getCelsius(int $temperature, $includeUnit = true)
 {

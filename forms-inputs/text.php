@@ -1,5 +1,5 @@
 <?php
-require('text-logic.php');
+require 'text-logic.php';
 ?>
 <!DOCTYPE html>
 <html>

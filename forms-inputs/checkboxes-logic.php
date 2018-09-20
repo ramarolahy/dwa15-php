@@ -1,5 +1,5 @@
 <?php
-require('../includes/helpers.php');
+require '../includes/helpers.php';
 
 $submitted = $_GET['submitted'] ?? false;
 $days = isset($_GET['days']) ? $_GET['days'] : null;

@@ -1,6 +1,6 @@
 <?php
-require('helpers.php');
-require('Cipher.php');
+require 'helpers.php';
+require 'Cipher.php';
 
 use DWA\Cipher;
 

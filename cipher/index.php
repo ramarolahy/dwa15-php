@@ -31,16 +31,20 @@ require 'logic.php';
     <div class='form-group'>
         <h2>Choose your encoding type...</h2>
 
-        <input type='radio'
-               name='type'
-               value='vowels' <?= (!isset($type) or $type == 'vowels') ? 'checked' : '' ?>>
-        <label for='vowels'>Vowel replacement</label>
+        <label>
+            <input type='radio'
+                   name='type'
+                   value='vowels' <?= (!isset($type) or $type == 'vowels') ? 'checked' : '' ?>>
+            Vowel replacement
+        </label>
         <p>Vowels are replaced with their numerical equivalent where a=0, e=1, i=2, o=3, u=4</p>
 
-        <input type='radio'
-               name='type'
-               value='shift' <?= (isset($type) && $type == 'shift') ? 'checked' : '' ?>>
-        <label for='vowels'>Shift letters</label>
+        <label>
+            <input type='radio'
+                   name='type'
+                   value='shift' <?= (isset($type) && $type == 'shift') ? 'checked' : '' ?>>
+            Shift letters
+        </label>
         <p>Each letter is replaced with its adjacent letter in the alphabet; e.g. a becomes b, x becomes y, z becomes a, etc.</p>
     </div>
 

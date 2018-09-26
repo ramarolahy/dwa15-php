@@ -16,7 +16,7 @@ class Cipher
     /**
      * Magic method that's invoked whenever an object of this class is instantiated
      */
-    public function __construct($algorithm = 'vowels')
+    public function __construct(String $algorithm = 'vowels')
     {
         # Set alphabet and vowels class properties
         $this->alphabet = str_split('abcdefghijklmnopqrstuvwxyz');
@@ -50,7 +50,7 @@ class Cipher
     /**
      *
      */
-    private function process(String $input, $encodeOrDecode)
+    private function process(String $input, String $encodeOrDecode)
     {
         $results = '';
 
@@ -59,8 +59,8 @@ class Cipher
 
             # Only encode letters; skip over spaces, symbols, etc.
             if (ctype_alnum($character)) {
-                $algorithm = $this->algorithm . $encodeOrDecode;
-                $character = $this->$algorithm($character);
+                $method = $this->algorithm . $encodeOrDecode;
+                $character = $this->$method($character);
             }
 
             $results .= $character;

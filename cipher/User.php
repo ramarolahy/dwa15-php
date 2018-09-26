@@ -14,8 +14,7 @@ class User {
     }
 }
 
-/*
-Example usage:
+
+# Example usage:
 $user = new User();
 echo $user->getPassword();
-*/

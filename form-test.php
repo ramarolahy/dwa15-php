@@ -33,10 +33,10 @@ $tests = [
     ['9', 'min:5', true],
     ['0', 'min:5', false],
     ['9', 'max:10', true],
-    ['10', 'max:10', false], # Fails because max is non-inclusive
+    ['10', 'max:10', true],
+    ['11', 'max:10', false],
     ['-5', 'min:0', false],
     ['-5', 'min:-10', true],
-    ['11', 'max:10', false],
     ['10.1', 'max:10', false],
     ['9.9', 'max:10', true],
     ['a', 'max:100', false],

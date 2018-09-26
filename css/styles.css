@@ -11,7 +11,17 @@ footer {
 }
 
 .alert {
-    max-width: 300px;
+    max-width: 500px;
+}
+
+.alert ul {
+    list-style-type: none;
+    padding:0;
+}
+
+.info {
+    font-size:9px;
+    color:grey;
 }
 
 label, legend {
@@ -41,7 +51,6 @@ ul.checkboxes li label, ul.radios li label {
     margin-top: 0;
     cursor: pointer;
 }
-
 
 a.return:link {
     display: block;

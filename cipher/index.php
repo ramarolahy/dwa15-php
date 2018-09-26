@@ -21,7 +21,7 @@ require 'logic.php';
     <strong>ci·pher</strong>: secret or disguised way of writing; a code.
 </p>
 
-<form method='GET'>
+<form method='GET' action='process.php'>
 
     <div class='form-group'>
         <label for='message'>Your message:</label>
@@ -33,13 +33,13 @@ require 'logic.php';
 
         <input type='radio'
                name='type'
-               value='vowels' <?= (empty($_GET) or $_GET['type'] == 'vowels') ? 'checked' : '' ?>>
+               value='vowels' <?= (!isset($type) or $type == 'vowels') ? 'checked' : '' ?>>
         <label for='vowels'>Vowel replacement</label>
         <p>Vowels are replaced with their numerical equivalent where a=0, e=1, i=2, o=3, u=4</p>
 
         <input type='radio'
                name='type'
-               value='shift' <?= (isset($_GET['type']) and $_GET['type'] == 'shift') ? 'checked' : '' ?>>
+               value='shift' <?= (isset($type) && $type == 'shift') ? 'checked' : '' ?>>
         <label for='vowels'>Shift letters</label>
         <p>Each letter is replaced with its adjacent letter in the alphabet; e.g. a becomes b, x becomes y, z becomes a, etc.</p>
     </div>
@@ -47,10 +47,10 @@ require 'logic.php';
     <input type='submit' value='Encode' class='btn btn-primary'>
 </form>
 
-<?php if (isset($results)) : ?>
+<?php if (isset($encodedMessage)) : ?>
     <h2>Results:</h2>
     <div id='results'>
-        <?= sanitize($results) ?>
+        <?= sanitize($encodedMessage) ?>
     </div>
 <?php endif ?>
 

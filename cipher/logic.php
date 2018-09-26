@@ -1,16 +1,11 @@
 <?php
-require 'Cipher.php';
+session_start();
 
-use DWA\Cipher;
+$results = $_SESSION['results'] ?? null;
 
-if (!empty($_GET)) {
-    # Get data from the form
-    $message = $_GET['message'];
-    $type = $_GET['type'];
-
-    # Instantiate a new Cipher object
-    $cipher = new Cipher($type);
-
-    # Use the object to encode the message
-    $results = $cipher->encode($message);
+if($results) {
+    # Extract the data from the results array into variables
+    extract($results);
 }
+
+session_unset();

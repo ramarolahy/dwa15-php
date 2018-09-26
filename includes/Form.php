@@ -10,17 +10,17 @@ class Form
     public $hasErrors = false;
 
     /**
-     * Form constructor.
-     * @param $postOrGet
+     * Form constructor
+     * @param $request
      */
-    public function __construct($postOrGet)
+    public function __construct($request)
     {
         # Store form data (POST or GET) in a class property called $request
-        $this->request = $postOrGet;
+        $this->request = $request;
     }
 
     /**
-     * Returns True if *either* GET or POST have been submitted.
+     * Returns true if *either* GET or POST have been submitted.
      * @return bool
      */
     public function isSubmitted()
@@ -45,7 +45,7 @@ class Form
      */
     public function has($name)
     {
-        return isset($this->request[$name]) ? true : false;
+        return isset($this->request[$name]);
     }
 
     /**
@@ -134,7 +134,8 @@ class Form
 
                 # Test failed
                 if (!$test) {
-                    $errors[] = 'The field ' . $fieldName . $this->getErrorMessage($rule, $parameter);
+                    $method = $rule . 'Message';
+                    $errors[] = 'The value for ' . $fieldName . ' ' . $this->$method($parameter);
 
                     # Only indicate one error per field
                     break;
@@ -148,67 +149,10 @@ class Form
         return $errors;
     }
 
-    /**
-     * Given a String rule like 'alphaNumeric' or 'required'
-     * It'll return a String message appropriate for that rule
-     * Default message is used if no message is set for a given rule
-     * @param $rule
-     * @param null $parameter
-     * @return mixed|string
-     */
-    private function getErrorMessage($rule, $parameter = null)
-    {
-        $language = [
-            'alphaNumeric' => ' can only contain letters or numbers.',
-            'alpha' => ' can only contain letters.',
-            'numeric' => ' can only contain numbers.',
-            'required' => ' can not be blank.',
-            'email' => ' is not a valid email address.',
-            'min' => ' has to be greater than ' . $parameter . '.',
-            'max' => ' has to be less than ' . $parameter . '.',
-        ];
-
-        # If a message for the rule was found, use that, otherwise default to " has an error"
-        $message = isset($language[$rule]) ? $language[$rule] : ' has an error.';
-
-        return $message;
-    }
-
-
     ### VALIDATION METHODS FOUND BELOW HERE ###
 
     /**
-     * Returns boolean if given value contains only letters/numbers/spaces
-     * @param $value
-     * @return bool
-     */
-    protected function alphaNumeric($value)
-    {
-        return ctype_alnum(str_replace(' ', '', $value));
-    }
-
-    /**
-     * Returns boolean if given value contains only letters/spaces
-     * @param $value
-     * @return bool
-     */
-    protected function alpha($value)
-    {
-        return ctype_alpha(str_replace(' ', '', $value));
-    }
-
-    /**
-     * Returns boolean if given value contains only positive whole numbers
-     * @param $value
-     * @return bool
-     */
-    protected function numeric($value)
-    {
-        return ctype_digit(str_replace(' ', '', $value));
-    }
-
-    /**
-     * Returns boolean if the given value is not blank
+     * The value can not be blank
      * @param $value
      * @return bool
      */
@@ -219,8 +163,73 @@ class Form
         return $value != '' && isset($value) && !is_null($value);
     }
 
+    protected function requiredMessage()
+    {
+        return 'can not be blank';
+    }
+
     /**
-     * Returns boolean if the given value is a valid email address
+     *  The value can only contain letters or spaces
+     * @param $value
+     * @return bool
+     */
+    protected function alpha($value)
+    {
+        return ctype_alpha(str_replace(' ', '', $value));
+    }
+
+    protected function alphaMessage()
+    {
+        return 'can only contain letters';
+    }
+
+    /**
+     * The value can only contain alpha-numeric characters
+     * @param $value
+     * @return bool
+     */
+    protected function alphaNumeric($value)
+    {
+        return ctype_alnum(str_replace(' ', '', $value));
+    }
+
+    protected function alphaNumericMessage()
+    {
+        return 'can only contain letters or numbers';
+    }
+
+    /**
+     * The value can only contain digits (0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+     * @param $value
+     * @return bool
+     */
+    protected function digit($value)
+    {
+        return ctype_digit(str_replace(' ', '', $value));
+    }
+
+    protected function digitMessage()
+    {
+        return 'can only contain digits';
+    }
+
+    /**
+     * The value can only contain numbers
+     * @param $value
+     * @return bool
+     */
+    protected function numeric($value)
+    {
+        return is_numeric(str_replace(' ', '', $value));
+    }
+
+    protected function numericMessage()
+    {
+        return 'can only contain numerical values';
+    }
+
+    /**
+     * The value must be a properly formatted email address
      * @param $value
      * @return mixed
      */
@@ -229,25 +238,96 @@ class Form
         return filter_var($value, FILTER_VALIDATE_EMAIL);
     }
 
+    protected function emailMessage()
+    {
+        return 'must contain a correctly formatted email address';
+    }
+
     /**
-     * Returns value if the given value is GREATER THAN (non-inclusive) the given parameter
+     * The value must be a properly formatted URL
+     * @param $value
+     * @return mixed
+     */
+    protected function url($value)
+    {
+        return filter_var($value, FILTER_VALIDATE_URL);
+    }
+
+    protected function urlMessage()
+    {
+        return 'must contain a correctly formatted URL';
+    }
+
+    /**
+     * The character count of the value must be LESS THAN (non-inclusive) the given parameter
+     * Fails if value is non-numeric
+     * @param $value
+     * @param $parameter
+     * @return bool
+     */
+    protected function minLength($value, $parameter)
+    {
+        return strlen($value) >= $parameter;
+    }
+
+    protected function minLengthMessage($parameter)
+    {
+        return 'must be at least ' . $parameter . ' character(s) long';
+    }
+
+    /**
+     * The character count of the value must be LESS THAN (inclusive) the given parameter
+     * Fails if value is non-numeric
+     * @param $value
+     * @param $parameter
+     * @return bool
+     */
+    protected function maxLength($value, $parameter)
+    {
+        return strlen($value) <= $parameter;
+    }
+    protected function maxLengthMessage($parameter)
+    {
+        return 'must be less than ' . $parameter . ' character(s) long';
+    }
+
+    /**
+     * The value must be GREATER THAN (inclusive) the given parameter
+     * Fails if value is non-numeric
      * @param $value
      * @param $parameter
      * @return bool
      */
     protected function min($value, $parameter)
     {
-        return floatval($value) > floatval($parameter);
+        if (!$this->numeric($value)) {
+            return false;
+        }
+
+        return floatval($value) >= floatval($parameter);
+    }
+    protected function minMessage($parameter)
+    {
+        return 'must be greater than or equal to ' . $parameter;
     }
 
     /**
-     * Returns value if the given value is LESS THAN (non-inclusive) the given parameter
+     * The value must be LESS THAN (inclusive) the given parameter
+     * Fails if value is non-numeric
      * @param $value
      * @param $parameter
      * @return bool
      */
     protected function max($value, $parameter)
     {
-        return floatval($value) < floatval($parameter);
+        if (!$this->numeric($value)) {
+            return false;
+        }
+
+        return floatval($value) <= floatval($parameter);
+    }
+    protected function maxMessage($parameter)
+    {
+        return 'must be less than or equal to ' . $parameter;
     }
 }
